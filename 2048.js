@@ -139,3 +139,50 @@ const initGame = () => {
 initGame();
 
 document.addEventListener("keyup", handleKeyup);
+
+// 适应手机端滑动
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const detectSwipeDirection = () => {
+  const deltaX = touchEndX - touchStartX;
+  const deltaY = touchEndY - touchStartY;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // 水平方向滑动
+    if (deltaX > 0) {
+      // 向右滑动
+      handleRight();
+    } else {
+      // 向左滑动
+      handleLeft();
+    }
+  } else {
+    // 垂直方向滑动
+    if (deltaY > 0) {
+      // 向下滑动
+      handleDown();
+    } else {
+      // 向上滑动
+      handleUp();
+    }
+  }
+
+  // 添加一个新的 tile
+  addTile();
+};
+
+// 监听 touchstart 事件
+document.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+});
+
+// 监听 touchend 事件
+document.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].clientX;
+  touchEndY = e.changedTouches[0].clientY;
+  detectSwipeDirection();
+});
