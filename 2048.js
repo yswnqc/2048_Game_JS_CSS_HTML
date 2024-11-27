@@ -174,23 +174,31 @@ const detectSwipeDirection = () => {
   addTile();
 };
 
-// 监听 touchstart 事件
-document.addEventListener("touchstart", (e) => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-});
-
-// 监听 touchend 事件
-document.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].clientX;
-  touchEndY = e.changedTouches[0].clientY;
-  detectSwipeDirection();
-});
+document.addEventListener(
+  "touchstart",
+  (e) => {
+    e.preventDefault(); // 阻止默认行为
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  },
+  { passive: false } // 重要：显式设置为非被动
+);
 
 document.addEventListener(
   "touchmove",
   (e) => {
     e.preventDefault(); // 阻止默认行为
+  },
+  { passive: false } // 重要：显式设置为非被动
+);
+
+document.addEventListener(
+  "touchend",
+  (e) => {
+    e.preventDefault(); // 阻止默认行为
+    touchEndX = e.changedTouches[0].clientX;
+    touchEndY = e.changedTouches[0].clientY;
+    detectSwipeDirection();
   },
   { passive: false } // 重要：显式设置为非被动
 );
