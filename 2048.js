@@ -186,3 +186,11 @@ document.addEventListener("touchend", (e) => {
   touchEndY = e.changedTouches[0].clientY;
   detectSwipeDirection();
 });
+
+document.addEventListener(
+  "touchmove",
+  (e) => {
+    e.preventDefault(); // 阻止默认行为
+  },
+  { passive: false } // 重要：显式设置为非被动
+);
