@@ -13,6 +13,18 @@ var board = [
 //   [2, 2, 128, 4],
 // ];
 
+const btn = document.querySelector("button");
+const intro = document.querySelector("span");
+const hide = document.querySelector(".intro");
+
+btn.addEventListener("click", () => {
+  window.location.reload();
+});
+
+intro.addEventListener("click", () => {
+  hide.classList.toggle("hide");
+});
+
 const updateTile = (tile, num) => {
   tile.innerText = num > 0 ? num : "";
   tile.classList = "tile";
