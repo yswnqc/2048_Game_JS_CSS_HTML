@@ -16,13 +16,17 @@ var board = [
 const btn = document.querySelector("button");
 const intro = document.querySelector("span");
 const hide = document.querySelector(".intro");
+const bd = document.querySelector(".board");
 
 btn.addEventListener("click", () => {
   window.location.reload();
 });
 
 intro.addEventListener("click", () => {
-  hide.classList.toggle("hide");
+  hide.classList.remove("hide");
+  setTimeout(() => {
+    hide.classList.add("hide");
+  }, 3000);
 });
 
 const updateTile = (tile, num) => {
@@ -186,7 +190,7 @@ const detectSwipeDirection = () => {
   addTile();
 };
 
-document.addEventListener(
+bd.addEventListener(
   "touchstart",
   (e) => {
     e.preventDefault(); // 阻止默认行为
@@ -196,7 +200,7 @@ document.addEventListener(
   { passive: false } // 重要：显式设置为非被动
 );
 
-document.addEventListener(
+bd.addEventListener(
   "touchmove",
   (e) => {
     e.preventDefault(); // 阻止默认行为
@@ -204,7 +208,7 @@ document.addEventListener(
   { passive: false } // 重要：显式设置为非被动
 );
 
-document.addEventListener(
+bd.addEventListener(
   "touchend",
   (e) => {
     e.preventDefault(); // 阻止默认行为
