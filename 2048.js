@@ -17,6 +17,7 @@ const btn = document.querySelector("button");
 const intro = document.querySelector("span");
 const hide = document.querySelector(".intro");
 const bd = document.querySelector(".board");
+const space = document.querySelector(".space");
 
 btn.addEventListener("click", () => {
   window.location.reload();
@@ -24,8 +25,10 @@ btn.addEventListener("click", () => {
 
 intro.addEventListener("click", () => {
   hide.classList.remove("hide");
+  space.classList.add("hide");
   setTimeout(() => {
     hide.classList.add("hide");
+    space.classList.remove("hide");
   }, 3000);
 });
 

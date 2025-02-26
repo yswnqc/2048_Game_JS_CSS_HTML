@@ -23,7 +23,6 @@ header {
 }
 
 section {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,8 +47,8 @@ button {
 }
 
 button:hover {
-    transform: scale(1.1);
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 p {
@@ -71,8 +70,16 @@ span:hover {
   color: #727371;
 }
 
+.space {
+  height: 30px;
+}
+
 .hide {
   display: none;
+}
+
+.intro {
+  margin-bottom: 15px;
 }
 
 .intro p {
